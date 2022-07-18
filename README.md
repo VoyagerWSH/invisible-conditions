@@ -6,12 +6,18 @@ Methods for quantifying prevalence of underreported medical conditions like IPV.
 All code was tested using Python 3.9.6. I recommend installing [mamba](https://github.com/mamba-org/mamba) to speed up installation, but you can substitute conda in just fine. Run the following commands from the root directory to install required dependencies (~5-10 minutes):
 
 ```
-mamba env create --name purple --file=purple_environment.yml
+# creat virtual environment
+mamba env create --name purple
 source activate purple
+conda env update -f purple_environment.yml
+
+# install SAR-PU
 git clone https://github.com/ML-KULeuven/SAR-PU
-cat requirements.txt | xargs -n 1 pip install
 cd SAR-PU
+cat requirements.txt | xargs -n 1 pip install
 pip install -e sarpu
+
+# install tice and km
 python make_km_lib.py
 pip install -e lib/tice
 pip install -e lib/km
